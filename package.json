@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p .",
     "typecheck": "tsc --noEmit -p .",
-    "test": "node --import tsx --test",
+    "test": "node --import tsx --test test/*.test.ts",
     "demo": "tsx src/demo.ts examples/content-draft.ir.json"
   },
   "devDependencies": {

@@ -10,6 +10,13 @@ This repository exists because agent process authoring is a different problem fr
 
 It sits between those layers.
 
+It is part of a small public code series:
+- `agent-code-playbook-kit` for process IR and compiled runtime playbooks
+- `agent-code-runner-sandbox` for bounded execution primitives
+- `agent-code-observer-mcp` for semantic tool surfaces and MCP bridging
+- `agent-code-a2ui-contracts` for structured rich-answer contracts
+- `org-aware-agents` for the docs-first architecture layer
+
 ## What is included
 
 - `src/types.ts` — IR and runtime playbook types
