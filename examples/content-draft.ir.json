@@ -1,0 +1,40 @@
+{
+  "version": "ir.v0",
+  "pipelineId": "content.draft",
+  "title": "Content draft",
+  "entityType": "task",
+  "entry": {
+    "statusIds": ["status-for-agent"]
+  },
+  "context": {
+    "useTaskContext": true
+  },
+  "writes": {
+    "task": {
+      "updateFields": ["actualResult"],
+      "addComment": true,
+      "attachArtifactTypes": ["source"],
+      "setStatusOnDone": "status-in-review"
+    }
+  },
+  "definitionOfDone": {
+    "requirements": [
+      { "kind": "nonEmpty", "path": "task.data.actualResult" },
+      { "kind": "nonEmpty", "path": "task.comment" },
+      { "kind": "artifact", "type": "source", "minCount": 1 }
+    ]
+  },
+  "recipes": {
+    "onStartedComment": "Taking this task in progress.",
+    "onDoneComment": "Draft is ready in actualResult with sources attached.",
+    "onDoneCommentMode": "fallback"
+  },
+  "safety": {
+    "agentSkills": ["anavi-external-agent"],
+    "connections": [],
+    "sandbox": {
+      "exec": { "allowCommands": ["node"], "timeoutMs": 60000 },
+      "http": { "allowHosts": ["example.com"], "timeoutMs": 30000 }
+    }
+  }
+}
